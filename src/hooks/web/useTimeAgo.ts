@@ -3,10 +3,10 @@ import { computed, unref } from 'vue'
 import { useLocaleStoreWithOut } from '@/store/modules/locale'
 
 const TIME_AGO_MESSAGE_MAP: {
-  'zh-CN': UseTimeAgoMessages
+  ko: UseTimeAgoMessages
   en: UseTimeAgoMessages
 } = {
-  'zh-CN': {
+  ko: {
     justNow: '刚刚',
     invalid: '无效时间',
     past: (n) => (n.match(/\d/) ? `${n}前` : n),

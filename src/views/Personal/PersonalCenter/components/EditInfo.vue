@@ -17,7 +17,7 @@ const { required, phone, maxlength, email } = useValidator()
 const formSchema = reactive<FormSchema[]>([
   {
     field: 'realName',
-    label: '昵称',
+    label: '이름',
     component: 'Input',
     colProps: {
       span: 24
@@ -25,7 +25,7 @@ const formSchema = reactive<FormSchema[]>([
   },
   {
     field: 'phoneNumber',
-    label: '手机号码',
+    label: '휴대전화',
     component: 'Input',
     colProps: {
       span: 24
@@ -33,7 +33,7 @@ const formSchema = reactive<FormSchema[]>([
   },
   {
     field: 'email',
-    label: '邮箱',
+    label: '이메일',
     component: 'Input',
     colProps: {
       span: 24
@@ -92,5 +92,5 @@ const save = async () => {
 <template>
   <Form :rules="rules" @register="formRegister" :schema="formSchema" />
   <ElDivider />
-  <BaseButton type="primary" @click="save">保存</BaseButton>
+  <BaseButton type="primary" @click="save">저장</BaseButton>
 </template>

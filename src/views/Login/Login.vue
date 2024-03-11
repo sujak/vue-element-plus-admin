@@ -1,9 +1,8 @@
 <script setup lang="ts">
 import { LoginForm, RegisterForm } from './components'
-import { ThemeSwitch } from '@/components/ThemeSwitch'
-import { LocaleDropdown } from '@/components/LocaleDropdown'
+// import { LocaleDropdown } from '@/components/LocaleDropdown'
 import { useI18n } from '@/hooks/web/useI18n'
-import { getCssVar, underlineToHump } from '@/utils'
+import { underlineToHump } from '@/utils'
 import { useAppStore } from '@/store/modules/app'
 import { useDesign } from '@/hooks/web/useDesign'
 import { ref } from 'vue'
@@ -25,12 +24,6 @@ const toRegister = () => {
 
 const toLogin = () => {
   isLogin.value = true
-}
-
-const themeChange = () => {
-  const color = getCssVar('--el-bg-color')
-  appStore.setMenuTheme(color)
-  appStore.setHeaderTheme(color)
 }
 </script>
 
@@ -72,8 +65,7 @@ const themeChange = () => {
             </div>
 
             <div class="flex justify-end items-center space-x-10px">
-              <ThemeSwitch @change="themeChange" />
-              <LocaleDropdown class="lt-xl:text-white dark:text-white" />
+              <!-- <LocaleDropdown class="lt-xl:text-white dark:text-white" /> -->
             </div>
           </div>
           <Transition appear enter-active-class="animate__animated animate__bounceInRight">

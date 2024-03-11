@@ -49,7 +49,7 @@ const saveAvatar = async () => {
 
 <template>
   <div class="flex w-100% h-100%">
-    <ContentWrap title="个人信息" class="w-400px">
+    <ContentWrap title="내 정보 관리" class="w-400px">
       <div class="flex justify-center items-center">
         <div
           class="avatar w-[150px] h-[150px] relative cursor-pointer"
@@ -64,27 +64,27 @@ const saveAvatar = async () => {
       </div>
       <ElDivider />
       <div class="flex justify-between items-center">
-        <div>账号：</div>
+        <div>계정：</div>
         <div>{{ userInfo?.username }}</div>
       </div>
       <ElDivider />
       <div class="flex justify-between items-center">
-        <div>昵称：</div>
+        <div>이름：</div>
         <div>{{ userInfo?.realName }}</div>
       </div>
       <ElDivider />
       <div class="flex justify-between items-center">
-        <div>手机号码：</div>
+        <div>휴대전화</div>
         <div>{{ userInfo?.phoneNumber ?? '-' }}</div>
       </div>
       <ElDivider />
       <div class="flex justify-between items-center">
-        <div>用户邮箱：</div>
+        <div>이메일</div>
         <div>{{ userInfo?.email ?? '-' }}</div>
       </div>
       <ElDivider />
       <div class="flex justify-between items-center">
-        <div>所属角色：</div>
+        <div>소속 역할：</div>
         <div>
           <template v-if="userInfo?.roleList?.length">
             <ElTag v-for="item in userInfo?.roleList || []" :key="item" class="ml-2 mb-w"
@@ -96,24 +96,24 @@ const saveAvatar = async () => {
       </div>
       <ElDivider />
     </ContentWrap>
-    <ContentWrap title="基本资料" class="flex-[3] ml-20px">
+    <ContentWrap title="기본 자료" class="flex-[3] ml-20px">
       <ElTabs v-model="activeName">
-        <ElTabPane label="基本信息" name="first">
+        <ElTabPane label="기본 정보" name="first">
           <EditInfo :user-info="userInfo" />
         </ElTabPane>
-        <ElTabPane label="修改密码" name="second">
+        <ElTabPane label="비밀번호 변경" name="second">
           <EditPassword />
         </ElTabPane>
       </ElTabs>
     </ContentWrap>
   </div>
 
-  <Dialog v-model="dialogVisible" title="修改头像" width="800px">
+  <Dialog v-model="dialogVisible" title="프로필 사진 수정" width="800px">
     <UploadAvatar ref="uploadAvatarRef" :url="userInfo?.avatarUrl || defaultAvatar" />
 
     <template #footer>
-      <ElButton type="primary" :loading="avatarLoading" @click="saveAvatar"> 保存 </ElButton>
-      <ElButton @click="dialogVisible = false">关闭</ElButton>
+      <ElButton type="primary" :loading="avatarLoading" @click="saveAvatar"> 저장 </ElButton>
+      <ElButton @click="dialogVisible = false">취소</ElButton>
     </template>
   </Dialog>
 </template>
