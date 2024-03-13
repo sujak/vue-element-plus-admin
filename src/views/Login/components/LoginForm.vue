@@ -86,7 +86,7 @@ const schema = reactive<FormSchema[]>([
           return (
             <>
               <div class="flex justify-between items-center w-[100%]">
-                <ElCheckbox v-model={remember.value} label={t('login.remember')} size="small" />
+                <ElCheckbox v-model={remember.value} value={t('login.remember')} size="small" />
                 <ElLink type="primary" underline={false}>
                   {t('login.forgetPassword')}
                 </ElLink>

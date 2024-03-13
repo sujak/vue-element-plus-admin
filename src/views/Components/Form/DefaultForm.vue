@@ -1053,7 +1053,7 @@ const schema = reactive<FormSchema[]>([
         default: (options: RadioOption[]) => {
           return options?.map((v) => {
             return (
-              <ElRadio label={v.value}>
+              <ElRadio value={v.value}>
                 {v.label}({v.value})
               </ElRadio>
             )
@@ -1098,7 +1098,7 @@ const schema = reactive<FormSchema[]>([
         default: (options: RadioOption[]) => {
           return options?.map((v) => {
             return (
-              <ElRadioButton label={v.value}>
+              <ElRadioButton value={v.value}>
                 {v.label}({v.value})
               </ElRadioButton>
             )
@@ -1158,7 +1158,7 @@ const schema = reactive<FormSchema[]>([
         default: (options: CheckboxOption[]) => {
           return options?.map((v) => {
             return (
-              <ElCheckbox label={v.value}>
+              <ElCheckbox value={v.value}>
                 {v.label}({v.value})
               </ElCheckbox>
             )
@@ -1215,7 +1215,7 @@ const schema = reactive<FormSchema[]>([
         default: (options: CheckboxOption[]) => {
           return options?.map((v) => {
             return (
-              <ElCheckboxButton label={v.value}>
+              <ElCheckboxButton value={v.value}>
                 {v.label}({v.value})
               </ElCheckboxButton>
             )

@@ -178,34 +178,6 @@ const adminList = [
         ]
       },
       {
-        path: 'editor-demo',
-        component: '##',
-        redirect: '/components/editor-demo/editor',
-        name: 'EditorDemo',
-        meta: {
-          title: 'router.editor',
-          alwaysShow: true
-        },
-        children: [
-          {
-            path: 'editor',
-            component: 'views/Components/Editor/Editor',
-            name: 'Editor',
-            meta: {
-              title: 'router.richText'
-            }
-          },
-          {
-            path: 'json-editor',
-            component: 'views/Components/Editor/JsonEditor',
-            name: 'JsonEditor',
-            meta: {
-              title: 'router.jsonEditor'
-            }
-          }
-        ]
-      },
-      {
         path: 'search',
         component: 'views/Components/Search',
         name: 'Search',
@@ -684,9 +656,6 @@ const testList: string[] = [
   '/components/table/table-video-preview',
   '/components/table/ref-table',
   '/components/table/card-table',
-  '/components/editor-demo',
-  '/components/editor-demo/editor',
-  '/components/editor-demo/json-editor',
   '/components/search',
   '/components/descriptions',
   '/components/image-viewer',

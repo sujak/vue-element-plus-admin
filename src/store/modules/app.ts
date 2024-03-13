@@ -20,7 +20,6 @@ interface AppState {
   tagsViewIcon: boolean
   logo: boolean
   fixedHeader: boolean
-  greyMode: boolean
   dynamicRouter: boolean
   serverDynamicRouter: boolean
   pageLoading: boolean
@@ -55,7 +54,6 @@ export const useAppStore = defineStore('app', {
       logo: true, // logo
       fixedHeader: true, // 固定toolheader
       footer: true, // 显示页脚
-      greyMode: false, // 是否开始灰色模式，用于特殊悼念日
       dynamicRouter: true, // 是否动态路由
       serverDynamicRouter: true, // 是否服务端渲染动态路由
       fixedMenu: false, // 是否固定菜单
@@ -132,9 +130,6 @@ export const useAppStore = defineStore('app', {
     getFixedHeader(): boolean {
       return this.fixedHeader
     },
-    getGreyMode(): boolean {
-      return this.greyMode
-    },
     getDynamicRouter(): boolean {
       return this.dynamicRouter
     },
@@ -208,9 +203,6 @@ export const useAppStore = defineStore('app', {
     },
     setFixedHeader(fixedHeader: boolean) {
       this.fixedHeader = fixedHeader
-    },
-    setGreyMode(greyMode: boolean) {
-      this.greyMode = greyMode
     },
     setDynamicRouter(dynamicRouter: boolean) {
       this.dynamicRouter = dynamicRouter

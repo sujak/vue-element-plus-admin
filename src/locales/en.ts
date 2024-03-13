@@ -84,7 +84,6 @@ export default {
     localeIcon: 'Locale icon',
     tagsView: 'Tags view',
     logo: 'Logo',
-    greyMode: 'Grey mode',
     fixedHeader: 'Fixed header',
     headerTheme: 'Header theme',
     cutMenu: 'Cut Menu',

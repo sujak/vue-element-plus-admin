@@ -100,13 +100,6 @@ const footerChange = (show: boolean) => {
   appStore.setFooter(show)
 }
 
-// 灰色模式
-const greyMode = ref(appStore.getGreyMode)
-
-const greyModeChange = (show: boolean) => {
-  appStore.setGreyMode(show)
-}
-
 // 动态路由
 const dynamicRouter = ref(!!appStore.getDynamicRouter)
 
@@ -202,11 +195,6 @@ watch(
     <div class="flex justify-between items-center">
       <span class="text-14px">{{ t('setting.footer') }}</span>
       <ElSwitch v-model="footer" @change="footerChange" />
-    </div>
-
-    <div class="flex justify-between items-center">
-      <span class="text-14px">{{ t('setting.greyMode') }}</span>
-      <ElSwitch v-model="greyMode" @change="greyModeChange" />
     </div>
 
     <div class="flex justify-between items-center">

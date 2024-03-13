@@ -90,8 +90,6 @@ const copyConfig = async () => {
       fixedHeader: ${appStore.getFixedHeader},
       // 页脚
       footer: ${appStore.getFooter},
-      // 灰色模式
-      greyMode: ${appStore.getGreyMode},
       // layout布局
       layout: '${appStore.getLayout}',
       // 暗黑模式

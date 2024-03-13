@@ -1,4 +1,4 @@
-import { createRouter, createWebHashHistory } from 'vue-router'
+import { createRouter, createWebHistory } from 'vue-router'
 import type { RouteRecordRaw } from 'vue-router'
 import type { App } from 'vue'
 import { Layout, getParentLayout } from '@/utils/routerHelper'
@@ -239,34 +239,6 @@ export const asyncRouterMap: AppRouteRecordRaw[] = [
             name: 'CardTable',
             meta: {
               title: t('router.cardTable')
-            }
-          }
-        ]
-      },
-      {
-        path: 'editor-demo',
-        component: getParentLayout(),
-        redirect: '/components/editor-demo/editor',
-        name: 'EditorDemo',
-        meta: {
-          title: t('router.editor'),
-          alwaysShow: true
-        },
-        children: [
-          {
-            path: 'editor',
-            component: () => import('@/views/Components/Editor/Editor.vue'),
-            name: 'Editor',
-            meta: {
-              title: t('router.richText')
-            }
-          },
-          {
-            path: 'json-editor',
-            component: () => import('@/views/Components/Editor/JsonEditor.vue'),
-            name: 'JsonEditor',
-            meta: {
-              title: t('router.jsonEditor')
             }
           }
         ]
@@ -731,7 +703,7 @@ export const asyncRouterMap: AppRouteRecordRaw[] = [
 ]
 
 const router = createRouter({
-  history: createWebHashHistory(),
+  history: createWebHistory(),
   strict: true,
   routes: constantRouterMap as RouteRecordRaw[],
   scrollBehavior: () => ({ left: 0, top: 0 })

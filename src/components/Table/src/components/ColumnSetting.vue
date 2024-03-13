@@ -133,18 +133,18 @@ watch(
               :key="item.field"
               class="flex items-center justify-between mt-12px"
             >
-              <ElCheckbox :label="item.field">
+              <ElCheckbox :value="item.field">
                 {{ item.label }}
               </ElCheckbox>
               <div class="flex items-center">
                 <ElRadioGroup size="small" v-model="item.fixed">
-                  <ElRadioButton label="left">
+                  <ElRadioButton value="left">
                     <Icon icon="ep:arrow-left" />
                   </ElRadioButton>
-                  <ElRadioButton :label="undefined">
+                  <ElRadioButton :value="undefined">
                     <Icon icon="ep:close" />
                   </ElRadioButton>
-                  <ElRadioButton label="right">
+                  <ElRadioButton value="right">
                     <Icon icon="ep:arrow-right" />
                   </ElRadioButton>
                 </ElRadioGroup>

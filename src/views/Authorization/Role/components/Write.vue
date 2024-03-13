@@ -79,7 +79,7 @@ const formSchema = ref<FormSchema[]>([
                   {unref(currentTreeData) && unref(currentTreeData)?.permissionList ? (
                     <ElCheckboxGroup v-model={unref(currentTreeData).meta.permission}>
                       {unref(currentTreeData)?.permissionList.map((v: any) => {
-                        return <ElCheckbox label={v.value}>{v.label}</ElCheckbox>
+                        return <ElCheckbox value={v.value}>{v.label}</ElCheckbox>
                       })}
                     </ElCheckboxGroup>
                   ) : null}

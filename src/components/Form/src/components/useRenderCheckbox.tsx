@@ -18,7 +18,7 @@ export const useRenderCheckbox = () => {
         <Com
           {...other}
           disabled={option[disabledAlias || 'disabled']}
-          label={option[valueAlias || 'value']}
+          value={option[valueAlias || 'value']}
         >
           {option[labelAlias || 'label']}
         </Com>
