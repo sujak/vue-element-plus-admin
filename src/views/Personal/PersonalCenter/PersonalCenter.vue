@@ -48,8 +48,8 @@ const saveAvatar = async () => {
 </script>
 
 <template>
-  <div class="flex w-100% h-100%">
-    <ContentWrap title="내 정보 관리" class="w-400px">
+  <div class="grid w-100% lg:h-100% grid-cols-1 lg:grid-cols-2 gap-sm">
+    <ContentWrap title="내 정보 관리">
       <div class="flex justify-center items-center">
         <div
           class="avatar w-[150px] h-[150px] relative cursor-pointer"
@@ -96,7 +96,7 @@ const saveAvatar = async () => {
       </div>
       <ElDivider />
     </ContentWrap>
-    <ContentWrap title="기본 자료" class="flex-[3] ml-20px">
+    <ContentWrap title="기본 자료" class="">
       <ElTabs v-model="activeName">
         <ElTabPane label="기본 정보" name="first">
           <EditInfo :user-info="userInfo" />

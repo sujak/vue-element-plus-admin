@@ -38,22 +38,22 @@ const adminList = [
       }
     ]
   },
-  {
-    path: '/external-link',
-    component: '#',
-    meta: {},
-    name: 'ExternalLink',
-    children: [
-      {
-        path: 'https://element-plus-admin-doc.cn/',
-        name: 'DocumentLink',
-        meta: {
-          title: 'router.document',
-          icon: 'clarity:document-solid'
-        }
-      }
-    ]
-  },
+  // {
+  //   path: '/external-link',
+  //   component: '#',
+  //   meta: {},
+  //   name: 'ExternalLink',
+  //   children: [
+  //     {
+  //       path: 'https://element-plus-admin-doc.cn/',
+  //       name: 'DocumentLink',
+  //       meta: {
+  //         title: 'router.document',
+  //         icon: 'clarity:document-solid'
+  //       }
+  //     }
+  //   ]
+  // },
   {
     path: '/guide',
     component: '#',
@@ -640,7 +640,7 @@ const testList: string[] = [
   '/dashboard/analysis',
   '/dashboard/workplace',
   'external-link',
-  'https://element-plus-admin-doc.cn/',
+  // 'https://element-plus-admin-doc.cn/',
   '/guide',
   '/guide/index',
   '/components',
@@ -750,28 +750,28 @@ const menus = [
         }
       ]
     },
-    {
-      path: '/external-link',
-      component: '#',
-      meta: {
-        title: '文档',
-        icon: 'clarity:document-solid'
-      },
-      name: 'ExternalLink',
-      status: Mock.Random.integer(0, 1),
-      id: 4,
-      children: [
-        {
-          path: 'https://element-plus-admin-doc.cn/',
-          name: 'DocumentLink',
-          status: Mock.Random.integer(0, 1),
-          id: 5,
-          meta: {
-            title: '文档'
-          }
-        }
-      ]
-    },
+    // {
+    //   path: '/external-link',
+    //   component: '#',
+    //   meta: {
+    //     title: '文档',
+    //     icon: 'clarity:document-solid'
+    //   },
+    //   name: 'ExternalLink',
+    //   status: Mock.Random.integer(0, 1),
+    //   id: 4,
+    //   children: [
+    //     {
+    //       path: 'https://element-plus-admin-doc.cn/',
+    //       name: 'DocumentLink',
+    //       status: Mock.Random.integer(0, 1),
+    //       id: 5,
+    //       meta: {
+    //         title: '文档'
+    //       }
+    //     }
+    //   ]
+    // },
     {
       path: '/level',
       component: '#',
@@ -980,28 +980,28 @@ const menus = [
     }
   ],
   [
-    {
-      path: '/external-link',
-      component: '#',
-      meta: {
-        title: '文档',
-        icon: 'clarity:document-solid'
-      },
-      name: 'ExternalLink',
-      status: Mock.Random.integer(0, 1),
-      id: 4,
-      children: [
-        {
-          path: 'https://element-plus-admin-doc.cn/',
-          name: 'DocumentLink',
-          status: Mock.Random.integer(0, 1),
-          id: 5,
-          meta: {
-            title: '文档'
-          }
-        }
-      ]
-    },
+    // {
+    //   path: '/external-link',
+    //   component: '#',
+    //   meta: {
+    //     title: '文档',
+    //     icon: 'clarity:document-solid'
+    //   },
+    //   name: 'ExternalLink',
+    //   status: Mock.Random.integer(0, 1),
+    //   id: 4,
+    //   children: [
+    //     {
+    //       path: 'https://element-plus-admin-doc.cn/',
+    //       name: 'DocumentLink',
+    //       status: Mock.Random.integer(0, 1),
+    //       id: 5,
+    //       meta: {
+    //         title: '文档'
+    //       }
+    //     }
+    //   ]
+    // },
     {
       path: '/level',
       component: '#',
