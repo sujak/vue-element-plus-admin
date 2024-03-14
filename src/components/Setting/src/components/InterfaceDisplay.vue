@@ -2,7 +2,7 @@
 import { ElSwitch, ElMessage } from 'element-plus'
 import { useI18n } from '@/hooks/web/useI18n'
 import { useAppStore } from '@/store/modules/app'
-import { computed, ref, watch } from 'vue'
+import { ref } from 'vue'
 import { setCssVar } from '@/utils'
 import { useDesign } from '@/hooks/web/useDesign'
 
@@ -13,27 +13,6 @@ const prefixCls = getPrefixCls('interface-display')
 const appStore = useAppStore()
 
 const { t } = useI18n()
-
-// 面包屑
-const breadcrumb = ref(appStore.getBreadcrumb)
-
-const breadcrumbChange = (show: boolean) => {
-  appStore.setBreadcrumb(show)
-}
-
-// 面包屑图标
-const breadcrumbIcon = ref(appStore.getBreadcrumbIcon)
-
-const breadcrumbIconChange = (show: boolean) => {
-  appStore.setBreadcrumbIcon(show)
-}
-
-// 折叠图标
-const hamburger = ref(appStore.getHamburger)
-
-const hamburgerChange = (show: boolean) => {
-  appStore.setHamburger(show)
-}
 
 // 全屏图标
 const screenfull = ref(appStore.getScreenfull)
@@ -72,34 +51,6 @@ const tagsViewIconChange = (show: boolean) => {
   appStore.setTagsViewIcon(show)
 }
 
-// logo
-const logo = ref(appStore.getLogo)
-
-const logoChange = (show: boolean) => {
-  appStore.setLogo(show)
-}
-
-// 菜单手风琴
-const uniqueOpened = ref(appStore.getUniqueOpened)
-
-const uniqueOpenedChange = (uniqueOpened: boolean) => {
-  appStore.setUniqueOpened(uniqueOpened)
-}
-
-// 固定头部
-const fixedHeader = ref(appStore.getFixedHeader)
-
-const fixedHeaderChange = (show: boolean) => {
-  appStore.setFixedHeader(show)
-}
-
-// 页脚
-const footer = ref(appStore.getFooter)
-
-const footerChange = (show: boolean) => {
-  appStore.setFooter(show)
-}
-
 // 动态路由
 const dynamicRouter = ref(!!appStore.getDynamicRouter)
 
@@ -115,43 +66,10 @@ const serverDynamicRouterChange = (show: boolean) => {
   ElMessage.info(t('setting.reExperienced'))
   appStore.setServerDynamicRouter(show)
 }
-
-// 固定菜单
-const fixedMenu = ref(appStore.getFixedMenu)
-
-const fixedMenuChange = (show: boolean) => {
-  appStore.setFixedMenu(show)
-}
-
-const layout = computed(() => appStore.getLayout)
-
-watch(
-  () => layout.value,
-  (n) => {
-    if (n === 'top') {
-      appStore.setCollapse(false)
-    }
-  }
-)
 </script>
 
 <template>
   <div :class="prefixCls">
-    <div class="flex justify-between items-center">
-      <span class="text-14px">{{ t('setting.breadcrumb') }}</span>
-      <ElSwitch v-model="breadcrumb" @change="breadcrumbChange" />
-    </div>
-
-    <div class="flex justify-between items-center">
-      <span class="text-14px">{{ t('setting.breadcrumbIcon') }}</span>
-      <ElSwitch v-model="breadcrumbIcon" @change="breadcrumbIconChange" />
-    </div>
-
-    <div class="flex justify-between items-center">
-      <span class="text-14px">{{ t('setting.hamburgerIcon') }}</span>
-      <ElSwitch v-model="hamburger" @change="hamburgerChange" />
-    </div>
-
     <div class="flex justify-between items-center">
       <span class="text-14px">{{ t('setting.screenfullIcon') }}</span>
       <ElSwitch v-model="screenfull" @change="screenfullChange" />
@@ -178,26 +96,6 @@ watch(
     </div>
 
     <div class="flex justify-between items-center">
-      <span class="text-14px">{{ t('setting.logo') }}</span>
-      <ElSwitch v-model="logo" @change="logoChange" />
-    </div>
-
-    <div class="flex justify-between items-center">
-      <span class="text-14px">{{ t('setting.uniqueOpened') }}</span>
-      <ElSwitch v-model="uniqueOpened" @change="uniqueOpenedChange" />
-    </div>
-
-    <div class="flex justify-between items-center">
-      <span class="text-14px">{{ t('setting.fixedHeader') }}</span>
-      <ElSwitch v-model="fixedHeader" @change="fixedHeaderChange" />
-    </div>
-
-    <div class="flex justify-between items-center">
-      <span class="text-14px">{{ t('setting.footer') }}</span>
-      <ElSwitch v-model="footer" @change="footerChange" />
-    </div>
-
-    <div class="flex justify-between items-center">
       <span class="text-14px">{{ t('setting.dynamicRouter') }}</span>
       <ElSwitch v-model="dynamicRouter" @change="dynamicRouterChange" />
     </div>
@@ -205,11 +103,6 @@ watch(
     <div class="flex justify-between items-center">
       <span class="text-14px">{{ t('setting.serverDynamicRouter') }}</span>
       <ElSwitch v-model="serverDynamicRouter" @change="serverDynamicRouterChange" />
-    </div>
-
-    <div class="flex justify-between items-center">
-      <span class="text-14px">{{ t('setting.fixedMenu') }}</span>
-      <ElSwitch v-model="fixedMenu" @change="fixedMenuChange" />
     </div>
   </div>
 </template>

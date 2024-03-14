@@ -22,31 +22,13 @@ export default defineComponent({
   },
   setup(props) {
     const appStore = useAppStore()
-
-    const layout = computed(() => appStore.getLayout)
-
     const { push, currentRoute } = useRouter()
 
     const permissionStore = usePermissionStore()
 
-    const menuMode = computed((): 'vertical' | 'horizontal' => {
-      // 竖
-      const vertical: LayoutType[] = ['classic', 'topLeft', 'cutMenu']
-
-      if (vertical.includes(unref(layout))) {
-        return 'vertical'
-      } else {
-        return 'horizontal'
-      }
-    })
-
-    const routers = computed(() =>
-      unref(layout) === 'cutMenu' ? permissionStore.getMenuTabRouters : permissionStore.getRouters
-    )
+    const routers = computed(() => permissionStore.getRouters)
 
     const collapse = computed(() => appStore.getCollapse)
-
-    const uniqueOpened = computed(() => appStore.getUniqueOpened)
 
     const activeMenu = computed(() => {
       const { meta, path } = unref(currentRoute)
@@ -70,30 +52,19 @@ export default defineComponent({
     }
 
     const renderMenuWrap = () => {
-      if (unref(layout) === 'top') {
-        return renderMenu()
-      } else {
-        return <ElScrollbar>{renderMenu()}</ElScrollbar>
-      }
+      return <ElScrollbar>{renderMenu()}</ElScrollbar>
     }
 
     const renderMenu = () => {
       return (
         <ElMenu
           defaultActive={unref(activeMenu)}
-          mode={unref(menuMode)}
-          collapse={
-            unref(layout) === 'top' || unref(layout) === 'cutMenu' ? false : unref(collapse)
-          }
-          uniqueOpened={unref(layout) === 'top' ? false : unref(uniqueOpened)}
+          mode="vertical"
+          collapse={unref(collapse)}
           backgroundColor="var(--left-menu-bg-color)"
           textColor="var(--left-menu-text-color)"
           activeTextColor="var(--left-menu-text-active-color)"
-          popperClass={
-            unref(menuMode) === 'vertical'
-              ? `${prefixCls}-popper--vertical`
-              : `${prefixCls}-popper--horizontal`
-          }
+          popperClass={`${prefixCls}-popper--vertical`}
           onSelect={menuSelect}
         >
           {{
@@ -110,11 +81,11 @@ export default defineComponent({
       <div
         id={prefixCls}
         class={[
-          `${prefixCls} ${prefixCls}__${unref(menuMode)}`,
+          `${prefixCls} ${prefixCls}__vertical`,
           'h-[100%] overflow-hidden flex-col bg-[var(--left-menu-bg-color)]',
           {
-            'w-[var(--left-menu-min-width)]': unref(collapse) && unref(layout) !== 'cutMenu',
-            'w-[var(--left-menu-max-width)]': !unref(collapse) && unref(layout) !== 'cutMenu'
+            'w-[var(--left-menu-min-width)]': unref(collapse),
+            'w-[var(--left-menu-max-width)]': !unref(collapse)
           }
         ]}
       >

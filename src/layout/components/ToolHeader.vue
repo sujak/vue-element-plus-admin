@@ -15,20 +15,11 @@ const prefixCls = getPrefixCls('tool-header')
 
 const appStore = useAppStore()
 
-// 面包屑
-const breadcrumb = computed(() => appStore.getBreadcrumb)
-
-// 折叠图标
-const hamburger = computed(() => appStore.getHamburger)
-
 // 全屏图标
 const screenfull = computed(() => appStore.getScreenfull)
 
 // 尺寸图标
 const size = computed(() => appStore.getSize)
-
-// 布局
-const layout = computed(() => appStore.getLayout)
 
 // 多语言图标
 const locale = computed(() => appStore.getLocale)
@@ -44,14 +35,10 @@ export default defineComponent({
           'h-[var(--top-tool-height)] relative px-[var(--top-tool-p-x)] flex items-center justify-between'
         ]}
       >
-        {layout.value !== 'top' ? (
-          <div class="h-full flex items-center">
-            {hamburger.value && layout.value !== 'cutMenu' ? (
-              <Collapse class="custom-hover" color="var(--top-header-text-color)"></Collapse>
-            ) : undefined}
-            {breadcrumb.value ? <Breadcrumb class="<md:hidden"></Breadcrumb> : undefined}
-          </div>
-        ) : undefined}
+        <div class="h-full flex items-center">
+          <Collapse class="custom-hover" color="var(--top-header-text-color)"></Collapse>
+          <Breadcrumb class="<md:hidden"></Breadcrumb>
+        </div>
         <div class="h-full flex items-center">
           {screenfull.value ? (
             <Screenfull class="custom-hover" color="var(--top-header-text-color)"></Screenfull>

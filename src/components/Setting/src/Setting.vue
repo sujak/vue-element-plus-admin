@@ -8,7 +8,6 @@ import { useAppStore } from '@/store/modules/app'
 import { trim, setCssVar, getCssVar } from '@/utils'
 import ColorRadioPicker from './components/ColorRadioPicker.vue'
 import InterfaceDisplay from './components/InterfaceDisplay.vue'
-import LayoutRadioPicker from './components/LayoutRadioPicker.vue'
 import { useStorage } from '@/hooks/web/useStorage'
 import { useClipboard } from '@vueuse/core'
 import { useDesign } from '@/hooks/web/useDesign'
@@ -49,29 +48,10 @@ const setMenuTheme = (color: string) => {
   appStore.setMenuTheme(color)
 }
 
-// 监听layout变化，重置一些主题色
-// watch(
-//   () => layout.value,
-//   (n) => {
-//     if (n === 'top' && !appStore.getIsDark) {
-//       headerTheme.value = '#fff'
-//       setHeaderTheme('#fff')
-//     } else {
-//       setMenuTheme(unref(menuTheme))
-//     }
-//   }
-// )
-
 // 拷贝
 const copyConfig = async () => {
   const { copy, copied, isSupported } = useClipboard({
     source: `
-      // 面包屑
-      breadcrumb: ${appStore.getBreadcrumb},
-      // 面包屑图标
-      breadcrumbIcon: ${appStore.getBreadcrumbIcon},
-      // 折叠图标
-      hamburger: ${appStore.getHamburger},
       // 全屏图标
       screenfull: ${appStore.getScreenfull},
       // 尺寸图标
@@ -82,16 +62,6 @@ const copyConfig = async () => {
       tagsView: ${appStore.getTagsView},
       // 标签页图标
       getTagsViewIcon: ${appStore.getTagsViewIcon},
-      // logo
-      logo: ${appStore.getLogo},
-      // 菜单手风琴
-      uniqueOpened: ${appStore.getUniqueOpened},
-      // 固定header
-      fixedHeader: ${appStore.getFixedHeader},
-      // 页脚
-      footer: ${appStore.getFooter},
-      // layout布局
-      layout: '${appStore.getLayout}',
       // 暗黑模式
       isDark: ${appStore.getIsDark},
       // 组件尺寸
@@ -171,10 +141,6 @@ const themeChange = () => {
       <!-- 主题 -->
       <ElDivider>{{ t('setting.theme') }}</ElDivider>
       <ThemeSwitch @change="themeChange" />
-
-      <!-- 布局 -->
-      <ElDivider>{{ t('setting.layout') }}</ElDivider>
-      <LayoutRadioPicker />
 
       <!-- 系统主题 -->
       <ElDivider>{{ t('setting.systemTheme') }}</ElDivider>

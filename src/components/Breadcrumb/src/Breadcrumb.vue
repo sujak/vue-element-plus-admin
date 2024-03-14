@@ -8,17 +8,11 @@ import { filter, treeToList } from '@/utils/tree'
 import type { RouteLocationNormalizedLoaded } from 'vue-router'
 import { useI18n } from '@/hooks/web/useI18n'
 import { Icon } from '@/components/Icon'
-import { useAppStore } from '@/store/modules/app'
 import { useDesign } from '@/hooks/web/useDesign'
 
 const { getPrefixCls } = useDesign()
 
 const prefixCls = getPrefixCls('breadcrumb')
-
-const appStore = useAppStore()
-
-// 面包屑图标
-const breadcrumbIcon = computed(() => appStore.getBreadcrumbIcon)
 
 export default defineComponent({
   name: 'Breadcrumb',
@@ -50,7 +44,7 @@ export default defineComponent({
         const meta = v.meta
         return (
           <ElBreadcrumbItem to={{ path: disabled ? '' : v.path }} key={v.name}>
-            {meta?.icon && breadcrumbIcon.value ? (
+            {meta?.icon ? (
               <>
                 <Icon icon={meta.icon} class="mr-[5px]"></Icon> {t(v?.meta?.title || '')}
               </>

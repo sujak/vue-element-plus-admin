@@ -11,7 +11,7 @@ const List: {
 }[] = [
   {
     username: 'admin',
-    password: 'admin',
+    password: 'example:user:admin:!@#$',
     role: 'admin',
     roleId: '1',
     permissions: ['*.*.*']

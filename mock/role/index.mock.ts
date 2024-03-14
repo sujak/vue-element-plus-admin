@@ -274,14 +274,6 @@ const adminList = [
         }
       },
       {
-        path: 'waterfall',
-        component: 'views/Components/Waterfall',
-        name: 'Waterfall',
-        meta: {
-          title: 'router.waterfall'
-        }
-      },
-      {
         path: 'image-cropping',
         component: 'views/Components/ImageCropping',
         name: 'ImageCropping',

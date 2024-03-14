@@ -13,8 +13,6 @@ const show = ref(true)
 
 const title = computed(() => appStore.getTitle)
 
-const layout = computed(() => appStore.getLayout)
-
 const collapse = computed(() => appStore.getCollapse)
 
 onMounted(() => {
@@ -24,26 +22,7 @@ onMounted(() => {
 watch(
   () => collapse.value,
   (collapse: boolean) => {
-    if (unref(layout) === 'topLeft' || unref(layout) === 'cutMenu') {
-      show.value = true
-      return
-    }
     show.value = !collapse
-  }
-)
-
-watch(
-  () => layout.value,
-  (layout) => {
-    if (layout === 'top' || layout === 'cutMenu') {
-      show.value = true
-    } else {
-      if (unref(collapse)) {
-        show.value = false
-      } else {
-        show.value = true
-      }
-    }
   }
 )
 </script>
@@ -53,8 +32,7 @@ watch(
     <router-link
       :class="[
         prefixCls,
-        layout !== 'classic' ? `${prefixCls}__Top` : '',
-        'flex !h-[var(--logo-height)] items-center cursor-pointer pl-8px relative decoration-none overflow-hidden'
+        `${prefixCls}__Top flex !h-[var(--logo-height)] items-center cursor-pointer pl-8px relative decoration-none overflow-hidden`
       ]"
       to="/"
     >
@@ -64,14 +42,7 @@ watch(
       />
       <div
         v-if="show"
-        :class="[
-          'ml-10px text-16px font-700',
-          {
-            'text-[var(--logo-title-text-color)]': layout === 'classic',
-            'text-[var(--top-header-text-color)]':
-              layout === 'topLeft' || layout === 'top' || layout === 'cutMenu'
-          }
-        ]"
+        :class="['ml-10px text-16px font-700', 'text-[var(--logo-title-text-color)]']"
       >
         {{ title }}
       </div>

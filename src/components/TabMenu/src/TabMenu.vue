@@ -1,7 +1,7 @@
 <script lang="tsx">
 import { usePermissionStore } from '@/store/modules/permission'
 import { useAppStore } from '@/store/modules/app'
-import { computed, unref, defineComponent, watch, ref, onMounted } from 'vue'
+import { computed, unref, defineComponent, watch, ref } from 'vue'
 import { useI18n } from '@/hooks/web/useI18n'
 import { ElScrollbar, ClickOutside } from 'element-plus'
 import { Icon } from '@/components/Icon'
@@ -31,8 +31,6 @@ export default defineComponent({
 
     const collapse = computed(() => appStore.getCollapse)
 
-    const fixedMenu = computed(() => appStore.getFixedMenu)
-
     const permissionStore = usePermissionStore()
 
     const routers = computed(() => permissionStore.getRouters)
@@ -42,27 +40,6 @@ export default defineComponent({
     const setCollapse = () => {
       appStore.setCollapse(!unref(collapse))
     }
-
-    onMounted(() => {
-      if (unref(fixedMenu)) {
-        const path = `/${unref(currentRoute).path.split('/')[1]}`
-        const children = unref(tabRouters).find(
-          (v) =>
-            (v.meta?.alwaysShow || (v?.children?.length && v?.children?.length > 1)) &&
-            v.path === path
-        )?.children
-
-        tabActive.value = path
-        if (children) {
-          permissionStore.setMenuTabRouters(
-            cloneDeep(children).map((v) => {
-              v.path = pathResolve(unref(tabActive), v.path)
-              return v
-            })
-          )
-        }
-      }
-    })
 
     watch(
       () => routers.value,
@@ -95,7 +72,7 @@ export default defineComponent({
     )
 
     // 是否显示菜单
-    const showMenu = ref(unref(fixedMenu) ? true : false)
+    const showMenu = ref(false)
 
     // tab高亮
     const tabActive = ref('')
@@ -111,7 +88,6 @@ export default defineComponent({
       tabActive.value = item.children ? item.path : item.path.split('/')[0]
       if (item.children) {
         if (newPath === oldPath || !unref(showMenu)) {
-          // showMenu.value = unref(fixedMenu) ? true : !unref(showMenu)
           showMenu.value = !unref(showMenu)
         }
         if (unref(showMenu)) {
@@ -139,9 +115,7 @@ export default defineComponent({
     }
 
     const clickOut = () => {
-      if (!unref(fixedMenu)) {
-        showMenu.value = false
-      }
+      showMenu.value = false
     }
 
     return () => (
@@ -210,8 +184,8 @@ export default defineComponent({
               '!left-[var(--tab-menu-min-width)]': unref(collapse),
               '!left-[var(--tab-menu-max-width)]': !unref(collapse),
               '!w-[var(--left-menu-max-width)] border-r-1 border-r-solid border-[var(--el-border-color)]':
-                unref(showMenu) || unref(fixedMenu),
-              '!w-0': !unref(showMenu) && !unref(fixedMenu)
+                unref(showMenu),
+              '!w-0': !unref(showMenu)
             }
           ]}
           style="transition: width var(--transition-time-02), left var(--transition-time-02);"

@@ -77,14 +77,14 @@ export default ({ command, mode }: ConfigEnv): UserConfig => {
       env.VITE_USE_MOCK === 'true'
         ? viteMockServe({
             ignore: /^\_/,
-            mockPath: 'mock'
-            //   localEnabled: !isBuild,
-            //   prodEnabled: isBuild,
-            //   injectCode: `
-            // import { setupProdMockServer } from '../mock/_createProductionServer'
+            mockPath: 'mock',
+            localEnabled: !isBuild,
+            prodEnabled: isBuild,
+            injectCode: `
+          import { setupProdMockServer } from '../mock/_createProductionServer'
 
-            // setupProdMockServer()
-            // `
+          setupProdMockServer()
+          `
           })
         : undefined,
       ViteEjsPlugin({
