@@ -61,9 +61,6 @@ ${selector} {
 ${selector}:hover {
   background-color: var(--top-header-hover-color);
 }
-.dark ${selector}:hover {
-  background-color: var(--el-bg-color-overlay);
-}
 `
       }
     ],
@@ -140,7 +137,7 @@ ${selector}:after {
       }
     ]
   ],
-  presets: [presetUno({ dark: 'class', attributify: false }), ...createPresetIcons()],
+  presets: [presetUno({ attributify: false }), ...createPresetIcons()],
   transformers: [transformerVariantGroup()],
   content: {
     pipeline: {

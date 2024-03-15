@@ -5,15 +5,12 @@ import { debounce } from 'lodash-es'
 import 'echarts-wordcloud'
 import { propTypes } from '@/utils/propTypes'
 import { computed, PropType, ref, unref, watch, onMounted, onBeforeUnmount, onActivated } from 'vue'
-import { useAppStore } from '@/store/modules/app'
 import { isString } from '@/utils/is'
 import { useDesign } from '@/hooks/web/useDesign'
 
 const { getPrefixCls, variables } = useDesign()
 
 const prefixCls = getPrefixCls('echart')
-
-const appStore = useAppStore()
 
 const props = defineProps({
   options: {
@@ -24,18 +21,8 @@ const props = defineProps({
   height: propTypes.oneOfType([Number, String]).def('500px')
 })
 
-const isDark = computed(() => appStore.getIsDark)
-
-const theme = computed(() => {
-  const echartTheme: boolean | string = unref(isDark) ? true : 'auto'
-
-  return echartTheme
-})
-
 const options = computed(() => {
-  return Object.assign(props.options, {
-    darkMode: unref(theme)
-  })
+  return Object.assign(props.options, {})
 })
 
 const elRef = ref<ElRef>()

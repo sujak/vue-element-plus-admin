@@ -78,12 +78,7 @@ export default defineComponent({
 
     return () => {
       return (
-        <div
-          class={[
-            prefixCls,
-            'bg-[var(--el-color-white)] dark:bg-[var(--el-bg-color)] dark:border-[var(--el-border-color)] dark:border-1px'
-          ]}
-        >
+        <div class={[prefixCls, 'bg-[var(--el-color-white)]']}>
           {props.title ? (
             <div
               class={[

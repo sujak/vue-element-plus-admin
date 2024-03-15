@@ -13,8 +13,6 @@ const appStore = useAppStore()
 
 const currentSize = computed(() => appStore.getCurrentSize)
 
-appStore.initTheme()
-
 // ElNotification({
 //   title: '팁',
 //   type: 'warning',

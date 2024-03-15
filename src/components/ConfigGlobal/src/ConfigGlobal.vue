@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { provide, computed, watch, onMounted } from 'vue'
+import { provide, computed, watch } from 'vue'
 import { propTypes } from '@/utils/propTypes'
 import { ComponentSize, ElConfigProvider } from 'element-plus'
 import { useLocaleStore } from '@/store/modules/locale'
@@ -17,11 +17,6 @@ const props = defineProps({
 })
 
 provide('configGlobal', props)
-
-// 初始化所有主题色
-onMounted(() => {
-  appStore.setCssVarTheme()
-})
 
 const { width } = useWindowSize()
 

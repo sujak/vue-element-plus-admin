@@ -108,7 +108,7 @@
     "vite": "5.1.6",
     "vite-plugin-ejs": "^1.7.0",
     "vite-plugin-eslint": "^1.8.1",
-    "vite-plugin-mock": "3.0.1",
+    "vite-plugin-mock": "2.9.6",
     "vite-plugin-progress": "^0.0.7",
     "vite-plugin-purge-icons": "^0.10.0",
     "vite-plugin-style-import": "2.0.0",
@@ -121,13 +121,5 @@
     "node": ">=18.0.0",
     "pnpm": ">=8.1.0"
   },
-  "license": "MIT",
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/kailong321200875/vue-element-plus-admin.git"
-  },
-  "bugs": {
-    "url": "https://github.com/kailong321200875/vue-element-plus-admin/issues"
-  },
-  "homepage": "https://github.com/kailong321200875/vue-element-plus-admin"
+  "license": "MIT"
 }

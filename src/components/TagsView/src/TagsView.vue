@@ -43,8 +43,6 @@ const appStore = useAppStore()
 
 const tagsViewIcon = computed(() => appStore.getTagsViewIcon)
 
-const isDark = computed(() => appStore.getIsDark)
-
 // 初始化tag
 const initTags = () => {
   affixTagArr.value = filterAffixTags(unref(routers))
@@ -260,11 +258,7 @@ watch(
 </script>
 
 <template>
-  <div
-    :id="prefixCls"
-    :class="prefixCls"
-    class="flex w-full relative bg-[#fff] dark:bg-[var(--el-bg-color)]"
-  >
+  <div :id="prefixCls" :class="prefixCls" class="flex w-full relative bg-[#fff]">
     <span
       :class="`${prefixCls}__tool ${prefixCls}__tool--first`"
       class="w-[var(--tags-view-height)] h-[var(--tags-view-height)] flex items-center justify-center cursor-pointer"
@@ -273,7 +267,7 @@ watch(
       <Icon
         icon="ep:d-arrow-left"
         color="var(--el-text-color-placeholder)"
-        :hover-color="isDark ? '#fff' : 'var(--el-color-black)'"
+        hover-color="var(--el-color-black)"
       />
     </span>
     <div class="overflow-hidden flex-1">
@@ -390,7 +384,7 @@ watch(
       <Icon
         icon="ep:d-arrow-right"
         color="var(--el-text-color-placeholder)"
-        :hover-color="isDark ? '#fff' : 'var(--el-color-black)'"
+        hover-color="var(--el-color-black)"
       />
     </span>
     <span
@@ -401,7 +395,7 @@ watch(
       <Icon
         icon="ant-design:reload-outlined"
         color="var(--el-text-color-placeholder)"
-        :hover-color="isDark ? '#fff' : 'var(--el-color-black)'"
+        hover-color="var(--el-color-black)"
       />
     </span>
     <ContextMenu
@@ -465,7 +459,7 @@ watch(
         <Icon
           icon="ant-design:setting-outlined"
           color="var(--el-text-color-placeholder)"
-          :hover-color="isDark ? '#fff' : 'var(--el-color-black)'"
+          hover-color="var(--el-color-black)"
         />
       </span>
     </ContextMenu>
@@ -545,39 +539,6 @@ watch(
     .@{prefix-cls}__item--close {
       :deep(svg) {
         color: var(--el-color-white) !important;
-      }
-    }
-  }
-}
-
-.dark {
-  .@{prefix-cls} {
-    &__tool {
-      &--first {
-        &::after {
-          display: none;
-        }
-      }
-    }
-
-    &__item {
-      border: 1px solid var(--el-border-color);
-    }
-
-    &__item:not(.is-active) {
-      &:hover {
-        color: var(--el-color-primary);
-      }
-    }
-
-    &__item.is-active {
-      color: var(--el-color-white);
-      background-color: var(--el-color-primary);
-      border: 1px solid var(--el-color-primary);
-      .@{prefix-cls}__item--close {
-        :deep(svg) {
-          color: var(--el-color-white) !important;
-        }
       }
     }
   }
