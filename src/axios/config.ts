@@ -8,7 +8,8 @@ import { objToFormData } from '@/utils'
 const defaultRequestInterceptors = (config: InternalAxiosRequestConfig) => {
   if (
     config.method === 'post' &&
-    config.headers['Content-Type'] === 'application/x-www-form-urlencoded'
+    config.headers['Content-Type'] === 'multipart/form-data' &&
+    !(config.data instanceof FormData)
   ) {
     config.data = qs.stringify(config.data)
   } else if (
